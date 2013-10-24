@@ -1,12 +1,5 @@
 <?php
 
-App::uses('ApiException', 'ApiManager.Lib');
-App::uses('ApiSaveException', 'ApiManager.Lib');
-App::uses('ApiLoginException', 'ApiManager.Lib');
-App::uses('ApiNotPostException', 'ApiManager.Lib');
-App::uses('ApiNotFoundException', 'ApiManager.Lib');
-App::uses('ApiMissingParamException', 'ApiManager.Lib');
-
 class ApiRequest
 {
 

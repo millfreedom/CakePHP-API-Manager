@@ -4,8 +4,6 @@
  * Throws an exception when there is an error while saving an object
  */
 
-App::uses('ApiException', 'ApiManager.Lib/Exception');
-
 class ApiSaveException extends ApiException 
 { 
 	public function __construct($validationErrors = null, $code = 500) 

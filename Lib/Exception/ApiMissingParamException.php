@@ -4,8 +4,6 @@
  * Throws an exception when a paramater that was expected is not available.
  */
 
-App::uses('ApiException', 'ApiManager.Lib/Exception');
-
 class ApiMissingParamException extends ApiException
 {
     public function __construct($params = null, $code = 200)
