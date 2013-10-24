@@ -4,7 +4,7 @@
  * Throws an exception if an API call is not using POST
  */
 
-App::uses('ApiException', 'ExceptionManager.Lib');
+App::uses('ApiException', 'ApiManager.Error');
 
 class ApiNotPostException extends ApiException 
 { 

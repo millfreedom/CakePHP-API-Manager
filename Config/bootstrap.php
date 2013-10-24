@@ -7,8 +7,8 @@
 
 // Turn this on if you want to do "soft" errors, 
 // ie. responses HTTP code 200 but with an error
-if (!Configure::read('ExceptionManager.softErrors')) {
-    Configure::write('ExceptionManager.softErrors', false);
+if (!Configure::read('ApiManager.softErrors')) {
+    Configure::write('ApiManager.softErrors', false);
 }
     
 ?>

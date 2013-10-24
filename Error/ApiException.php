@@ -8,7 +8,7 @@ class ApiException extends CakeException
 {
     public function __construct($message = 'There was error in the API. Please try again later.', $code = 500)
     {
-        if (Configure::read('ExceptionManager.softErrors')) {
+        if (Configure::read('ApiManager.softErrors')) {
             if (
                 (
                     isset($this->getTrace()[0]['function']) &&

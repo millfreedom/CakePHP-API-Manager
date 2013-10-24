@@ -58,8 +58,8 @@ Setup the `autoloader` if you are using composer in `/app/Config/bootstrap.php`:
 
 Optional: Edit `/app/Config/bootstrap.php` file and add `ExceptionManager` keys:
 
-    if (!Configure::read('ExceptionManager.softErrors')) {
-        Configure::write('ExceptionManager.softErrors', false);
+    if (!Configure::read('ApiManager.softErrors')) {
+        Configure::write('ApiManager.softErrors', false);
     }
 
 Throw errors!

@@ -4,7 +4,7 @@
  * Throws an exception when something that was being searched for could not be found.
  */
 
-App::uses('ApiException', 'ExceptionManager.Lib');
+App::uses('ApiException', 'ApiManager.Error');
 
 class ApiNotFoundException extends ApiException
 {

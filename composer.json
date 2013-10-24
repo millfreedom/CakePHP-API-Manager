@@ -1,9 +1,9 @@
 {
-    "name": "asugai/cake-php-exception-manager",
+    "name": "asugai/cake-php-api-manager",
     "type": "cakephp-plugin",
-    "description": "A simple lib to handle common API errors for CakePHP.",
+    "description": "A simple lib to handle common API functions for CakePHP.",
     "keywords": ["exception", "api", "cakephp"],
-    "homepage": "http://github.com/asugai/cake-php-exception-manager",
+    "homepage": "http://github.com/asugai/cake-php-api-manager",
     "license": "MIT",
     "authors": [
         {
@@ -18,6 +18,6 @@
         "vendor-dir": "Vendor"
     },
     "extra": {
-        "installer-name": "ExceptionManager"
+        "installer-name": "ApiManager"
     }
 }

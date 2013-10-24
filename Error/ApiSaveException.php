@@ -4,7 +4,7 @@
  * Throws an exception when there is an error while saving an object
  */
 
-App::uses('ApiException', 'ExceptionManager.Lib');
+App::uses('ApiException', 'ApiManager.Error');
 
 class ApiSaveException extends ApiException 
 { 

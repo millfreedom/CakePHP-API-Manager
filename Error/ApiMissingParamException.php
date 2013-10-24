@@ -4,7 +4,7 @@
  * Throws an exception when a paramater that was expected is not available.
  */
 
-App::uses('ApiException', 'ExceptionManager.Lib');
+App::uses('ApiException', 'ApiManager.Error');
 
 class ApiMissingParamException extends ApiException
 {

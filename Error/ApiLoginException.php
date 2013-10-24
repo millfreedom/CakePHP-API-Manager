@@ -4,7 +4,7 @@
  * Throws a login API error
  */
 
-App::uses('ApiException', 'ExceptionManager.Lib');
+App::uses('ApiException', 'ApiManager.Error');
 
 class ApiLoginException extends ApiException
 {
