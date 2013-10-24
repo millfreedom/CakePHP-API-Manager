@@ -34,13 +34,13 @@ class ApiRequest
         $calledClassInstance->mapPrepare();
 
         //map 
-        if ($calledClassInstance->beforeMapCallback() {
+        if ($calledClassInstance->beforeMapCallback()) {
             $calledClassInstance->mapData();
             $calledClassInstance->afterMapCallback();
         }
 
         //check
-        if ($calledClassInstance->beforeCheckCallback() {
+        if ($calledClassInstance->beforeCheckCallback()) {
             $calledClassInstance->checkData();
             $calledClassInstance->afterCheckCallback();
         }
@@ -68,8 +68,8 @@ class ApiRequest
         $newMap = [];
         
         foreach ((array) $this->map as $key => $value) {
-            if (is_numeric($key) {
-                if (!is_string($value) {
+            if (is_numeric($key)) {
+                if (!is_string($value)) {
                     throw new Exception('key must be string, but "' . gettype($value) . '" given.');
                 }
                 
@@ -93,7 +93,7 @@ class ApiRequest
         foreach ((array) $this->map as $key => $value) {
             $parsedValue = $this->parseValue($this->request, $key);
             
-            if (!is_null($parsedValue) {
+            if (!is_null($parsedValue)) {
                 $this->mappedRequest[$value] = $parsedValue;
             }
         }
@@ -113,21 +113,21 @@ class ApiRequest
         foreach ($this->mandatory as $key => $value) {
             $allowedValues = [];
 
-            if (is_numeric($key) {
+            if (is_numeric($key)) {
                 $fieldName = $value;
                 $key = $value;
             }
             
-            if (is_string($value) {
+            if (is_string($value)) {
                 $fieldName = $value;
-            } elseif (is_array($value) {
+            } elseif (is_array($value)) {
                 $fieldName = Hash::get($value, 'name');
                 $allowedValues = (array) Hash::get($value, 'allowed');
             }
 
-            if (!$this->mappedRequest->offsetExists($key) {
+            if (!$this->mappedRequest->offsetExists($key)) {
                 $errors[] = $fieldName;
-            } elseif ($this->mappedRequest->offsetGet($key) {
+            } elseif ($this->mappedRequest->offsetGet($key)) {
                 //if value is evaluated to true
             } else {
                 $isOk = false;
@@ -141,7 +141,7 @@ class ApiRequest
             }
         }
         
-        if (!empty($errors) {
+        if (!empty($errors)) {
             throw new ApiMissingParamException($errors);
         }
         
@@ -158,7 +158,7 @@ class ApiRequest
     {
         $return = Hash::get((array) $data, $key);
         
-        if (is_null($return) {
+        if (is_null($return)) {
             $return = Hash::get($this->defaults, $key);
         }
         
@@ -191,7 +191,7 @@ class ApiRequest
 
     public function __unset($name)
     {
-        if ($this->mappedRequest->offsetExists($name) {
+        if ($this->mappedRequest->offsetExists($name)) {
             $this->mappedRequest->offsetUnset($name);
         }
     }
@@ -203,7 +203,7 @@ class ApiRequest
 
     public function __get($name)
     {
-        if (!$this->mappedRequest->offsetExists($name) {
+        if (!$this->mappedRequest->offsetExists($name)) {
             return null;
         }
         
