@@ -1,63 +1,9 @@
 <html>
     <head>
+        <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+        <link href='/apimanager/css/style.css' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <style>
-            * {
-                font-family: Tahoma, sans-serif;
-                font-size:12px;
-            }
-            .green {
-                color: green;
-            }
-            .red {
-                color: red;
-            }
-            .actions {
-                text-align: right;
-            }
-            .actions ul {
-                list-style-type: none;
-            }
-            .actions ul li {
-                display: inline;
-                margin-right: 10px;
-            }
-            .call {
-                border-top: 1px solid gray;
-                margin-left: 10px;
-                margin-right: 10px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-            .calls {
-                width: 50%;
-                float: left;
-                border-right: 1px solid gray;
-                max-height: 100%;
-                overflow: scroll;
-            }
-            .results {
-                float:left;
-                width:49%;
-                max-height: 100%;
-                overflow: scroll
-            }
-            .result {
-                margin: 10;
-                word-wrap: break-word;
-            }
-            button {
-            /*    width: 200px;*/
-            }
-            h1 {
-                font-size: 15px;
-                margin-left: 10px;
-            }
-            textarea {
-                width: 400px;
-                height: 200px;
-            }
-        </style>
+        <script src="/apimanager/js/site.js"></script>
         <script>
             $(document).ready(function() {
                 $('#showInfo').click(function() {
@@ -117,7 +63,6 @@
     </div>
     <div class="results">
         <h1>Results</h1>
-        <pre class="result">
-        </pre>
+        <pre class="result"></pre>
     </body>
 </html>
