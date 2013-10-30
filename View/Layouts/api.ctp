@@ -92,7 +92,7 @@
     </head>
     <body>
     <div class="calls">
-        <h1><?php $title; ?></h1>
+        <h1><?php echo $title; ?></h1>
         <div class="actions">
             <ul>
                 <li>
