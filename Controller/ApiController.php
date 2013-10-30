@@ -8,7 +8,7 @@ class ApiController extends Controller
     {
         if (Configure::read('ApiManager.log')) {
             $this->loadModel('ApiLog');
-            $this->CallLog->log($this);
+            $this->ApiLog->log($this);
         }
 
 		if (!$this->request->isPost()) {
