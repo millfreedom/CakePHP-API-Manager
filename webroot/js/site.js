@@ -25,70 +25,27 @@ var jsonsh = {
 	tab_space: '  ',
 	
 	/** Initialize JSONSH */
-	init: function()
-	{
-		/** Add Placeholder Text for browsers that do not support it */
-		jQuery('input[placeholder], textarea[placeholder]').placeholder();
-		
-		/** Allow logo and reset link to reset interface */
-		jQuery('.logo, .reset').click(function()
-		{
-			jsonsh.reset_interface();
-
-			return false;
-		});
-		
-		/** Look for changes to JSON source */
-		jQuery('#source').keyup(function()
-		{
-			/** Only process JSON if there is some, and it is not the same as before */
-			if(jQuery(this).val() != jsonsh.old_value)
-			{
-				/** Passed out initial tests, go ahead and make it pretty */
-				jsonsh.make_pretty();
-				
-				/** Update our old value to the latest and greatest */
-				jsonsh.old_value = jQuery(this).val();
-			}
-			/** Source is blank now, no need to do anything, so reset interface */
-			else if(jQuery(this).val() == '')
-			{
-				jsonsh.reset_interface();
-			}
-		});
-
-
-		jQuery('#url').keyup(function()
-		{
-			/** Only process JSON if there is some, and it is not the same as before */
-			var _this=this;
-			if(jQuery(this).val() != jsonsh.old_url)
-			{
-
-				//retrieve API response
-				jQuery.ajax({
-				  url: jQuery(this).val(),
-				  dataType: 'jsonp',
-				  success: function(response){
-
-				  	/** Passed out initial tests, go ahead and make it pretty */
-					jsonsh.make_pretty(JSON.stringify(response));
-					
-					/** Update our old value to the latest and greatest */
-					jsonsh.old_url = jQuery(_this).val();
-
-				  }
-				});
-
-			}
-			/** Source is blank now, no need to do anything, so reset interface */
-			else if(jQuery(this).val() == '')
-			{
-				jsonsh.reset_interface();
-			}
-		});
-
-	},
+    init: function()
+    {
+        /** Look for changes to JSON source */
+        jQuery('#source').change(function()
+        {
+            /** Only process JSON if there is some, and it is not the same as before */
+            if(jQuery(this).val() != jsonsh.old_value)
+            {
+                /** Passed out initial tests, go ahead and make it pretty */
+                jsonsh.make_pretty();
+                
+                /** Update our old value to the latest and greatest */
+                jsonsh.old_value = jQuery(this).val();
+            }
+            /** Source is blank now, no need to do anything, so reset interface */
+            else if(jQuery(this).val() == '')
+            {
+                jsonsh.reset_interface();
+            }
+        });
+    },
 	
 	/**  */
 	make_pretty: function(json)
@@ -183,10 +140,8 @@ var jsonsh = {
 	reset_interface: function()
 	{
 		jQuery('#result').fadeOut(jsonsh.animation_speed);
-		jQuery('#url').val('');
 		jQuery('#source').val('');
 		jQuery('#output_wrapper').html('');
-		jQuery('.reset').fadeOut(jsonsh.animation_speed);
 
 		jsonsh.is_pretty = false;
 		jsonsh.old_value = '';

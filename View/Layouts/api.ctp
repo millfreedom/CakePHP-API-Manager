@@ -22,8 +22,7 @@
                         'url': url,
                         'type': 'POST',
                         'complete': function(xhr, res) { 
-                            replyData = $.parseJSON(xhr.responseText);
-                            $('.result').html(JSON.stringify(replyData, undefined, 2)); 
+                            $('#source').val(xhr.responseText);
                         }            
                     }
         
@@ -63,6 +62,7 @@
     </div>
     <div class="results">
         <h1>Results</h1>
-        <pre class="result"></pre>
+        <input type="hidden" id="source" />
+        <div id="output_wrapper"></div>
     </body>
 </html>
