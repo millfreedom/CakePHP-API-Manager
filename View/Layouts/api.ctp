@@ -1,9 +1,10 @@
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
-        <link href='/apimanager/css/style.css' rel='stylesheet' type='text/css'>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="/apimanager/js/site.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Anonymous+Pro' rel='stylesheet' type='text/css'>
+        <link href='/api_manager/css/style.css' rel='stylesheet' type='text/css'>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+        <script src="/api_manager/js/site.js"></script>
         <script>
             $(document).ready(function() {
                 $('#showInfo').click(function() {
