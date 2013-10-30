@@ -4,7 +4,6 @@
         <link href='/api_manager/css/style.css' rel='stylesheet' type='text/css'>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-        <script src="/api_manager/js/site.js"></script>
         <script>
             $(document).ready(function() {
                 $('#showInfo').click(function() {
@@ -23,22 +22,13 @@
                         'url': url,
                         'type': 'POST',
                         'complete': function(xhr, res) { 
-                            $('#source').html(xhr.responseText);
+                            $("#result").html(
+                                '<pre class="prettyprint linenums"><code class="language-js">' +
+                                JSON.stringify($.parseJSON(xhr.responseText), null, 2) + 
+                                '</code></pre>'
+                            );
                             
-                            /** Only process JSON if there is some, and it is not the same as before */
-                            if($('#source').val() != jsonsh.old_value)
-                            {
-                                /** Passed out initial tests, go ahead and make it pretty */
-                                jsonsh.make_pretty();
-                
-                                /** Update our old value to the latest and greatest */
-                                jsonsh.old_value = $('#source').val();
-                            }
-                            /** Source is blank now, no need to do anything, so reset interface */
-                            else if($('#source').val() == '')
-                            {
-                                jsonsh.reset_interface();
-                            }
+                            prettyPrint();
                         }            
                     }
         
@@ -78,7 +68,6 @@
     </div>
     <div class="results">
         <h1>Results</h1>
-        <textarea style="display: none;" id="source"></textarea>
-        <div id="output_wrapper"></div>
+        <div id="result"></div>
     </body>
 </html>
