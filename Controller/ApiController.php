@@ -7,8 +7,13 @@ class ApiController extends Controller
 	protected function api_DefaultFlow(\AppModel $model, $function, $requestMapper) 
     {
         if (Configure::read('ApiManager.log')) {
-            $this->loadModel('ApiLog');
-            $this->ApiLog->log($this);
+            $this->loadModel('ApiManager.ApiLog');
+            $this->ApiLog->create();
+            $this->ApiLog->save(array(
+                'controller' => $this->request->params['controller'],
+                'action' => $this->action,
+                'data' => json_encode($this->data)
+            )); 
         }
 
 		if (!$this->request->isPost()) {
