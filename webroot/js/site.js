@@ -27,24 +27,7 @@ var jsonsh = {
 	/** Initialize JSONSH */
     init: function()
     {
-        /** Look for changes to JSON source */
-        jQuery('#source').change(function()
-        {
-            /** Only process JSON if there is some, and it is not the same as before */
-            if(jQuery(this).val() != jsonsh.old_value)
-            {
-                /** Passed out initial tests, go ahead and make it pretty */
-                jsonsh.make_pretty();
-                
-                /** Update our old value to the latest and greatest */
-                jsonsh.old_value = jQuery(this).val();
-            }
-            /** Source is blank now, no need to do anything, so reset interface */
-            else if(jQuery(this).val() == '')
-            {
-                jsonsh.reset_interface();
-            }
-        });
+        
     },
 	
 	/**  */

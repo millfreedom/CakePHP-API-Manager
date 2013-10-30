@@ -23,7 +23,22 @@
                         'url': url,
                         'type': 'POST',
                         'complete': function(xhr, res) { 
-                            $('#source').val(xhr.responseText);
+                            $('#source').html(xhr.responseText);
+                            
+                            /** Only process JSON if there is some, and it is not the same as before */
+                            if($('#source').val() != jsonsh.old_value)
+                            {
+                                /** Passed out initial tests, go ahead and make it pretty */
+                                jsonsh.make_pretty();
+                
+                                /** Update our old value to the latest and greatest */
+                                jsonsh.old_value = $('#source').val();
+                            }
+                            /** Source is blank now, no need to do anything, so reset interface */
+                            else if($('#source').val() == '')
+                            {
+                                jsonsh.reset_interface();
+                            }
                         }            
                     }
         
@@ -63,7 +78,7 @@
     </div>
     <div class="results">
         <h1>Results</h1>
-        <input type="hidden" id="source" />
+        <textarea style="display: none;" id="source"></textarea>
         <div id="output_wrapper"></div>
     </body>
 </html>
