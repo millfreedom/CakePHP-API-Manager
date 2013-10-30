@@ -109,7 +109,8 @@
             <p><?php echo $call['description']; ?></p>
             <button type="button" data-url="<?php echo $call['url']; ?>" id="<?php echo $call['id']; ?>"><?php echo $call['button']; ?></button>
             <?php if (!empty($call['data'])) : ?>
-            <textarea name="text"><?php echo $call['data']; ?></textarea>
+            <br />
+            <textarea name="text"><?php echo json_encode($call['data'], JSON_PRETTY_PRINT); ?></textarea>
             <?php endif; ?>
         </div>
         <?php endforeach; ?>
