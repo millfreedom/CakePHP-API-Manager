@@ -40,7 +40,7 @@ class ApiController extends Controller
                 'data' => $data
     		];
         } else {
-            $response = $model -> {$function}($requestMapper::map($data));
+            $response = $model->{$function}($requestMapper::map($data));
         }
 
 		$this->set('Success', $response);
