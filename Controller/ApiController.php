@@ -27,17 +27,21 @@ class ApiController extends Controller
 		    $data = $this->request->data;
 		}
         
-        if (!in_array($this->action, Configure::read('ApiManager.objectifyExclude'))) {
-            $data = $this->_objectify($model->{$function}($requestMapper::map($data)));
-        } else {
-            $data = $model->{$function}($requestMapper::map($data));
-        }
+        if (Configure::read('ApiManager.legacy')) {
+            if (!in_array($this->action, Configure::read('ApiManager.objectifyExclude'))) {
+                $data = $this->_objectify($model->{$function}($requestMapper::map($data)));
+            } else {
+                $data = $model->{$function}($requestMapper::map($data));
+            }
         
-		$response = [
-		    'status' => 'success',
-            'methodName' => 'Api'.$this->name.ucwords(str_replace('api_', '', $this->action)),
-            'data' => $data
-		];
+    		$response = [
+    		    'status' => 'success',
+                'methodName' => 'Api'.$this->name.ucwords(str_replace('api_', '', $this->action)),
+                'data' => $data
+    		];
+        } else {
+            $response = $model -> {$function}($requestMapper::map($data));
+        }
 
 		$this->set('Success', $response);
 		$this->set('_serialize', 'Success');
