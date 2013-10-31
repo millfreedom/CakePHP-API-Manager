@@ -14,7 +14,7 @@
         </ul>
     </div>
     <?php foreach ($calls as $call) : ?>
-        <?php $this->element('ApiManager.call', ['call' => $call]); ?>
+        <?php echo $this->element('ApiManager.call', ['call' => $call]); ?>
     <?php endforeach; ?>
     
 </div>
