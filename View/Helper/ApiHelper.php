@@ -1,7 +1,12 @@
 <?php
+
+App::uses('AppHelper', 'View/Helper');
     
-class ApiHelper {
-    
+class ApiHelper extends AppHelper {
+    public function createRuns()
+    {
+        
+    }
 }    
     
 ?>

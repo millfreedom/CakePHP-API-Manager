@@ -4,7 +4,7 @@ App::uses('Controller', 'Controller');
 
 class ApiController extends Controller
 {
-	protected function api_DefaultFlow(\AppModel $model, $function, $requestMapper) 
+    protected function api_DefaultFlow(\AppModel $model, $function, $requestMapper) 
     {
         if (Configure::read('ApiManager.log')) {
             $this->loadModel('ApiManager.ApiLog');
@@ -52,5 +52,23 @@ class ApiController extends Controller
         }
         
         return (object) $data;
+    }
+    
+    public function getTokens($calls) {
+        $tokens = NULL;
+        
+        self::_flatten_array(Hash::extract($calls, '{n}.tokens'), $tokens);
+        
+        return $tokens;
+    }
+    
+    private static function _flatten_array($array, &$result) {
+        foreach($array as $key => $value) {
+            if(is_array($value)) {
+                self::_flatten_array($value, $result);
+            } else {
+                $result[$key] = $value;
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@
     <h1><?php echo $title; ?></h1>
     <div class="actions">
         <ul>
+            <?php $this->Api->createRuns(); ?>
             <li>
                 <input type="checkbox" id="showInfo" checked="checked" /> Show extended info
             </li>
@@ -33,6 +34,16 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
 <script>
+    var tokens = JSON.parse('<?php echo json_encode($tokens); ?>');
+
+    function replaceTokens(str) {
+        for (i in tokens) {
+            str = str.replace(i, tokens[i]);
+        }
+        
+        return str;
+    }
+
     $(document).ready(function() {
         $('#showInfo').click(function() {
             $(".call > p").toggle();
@@ -43,12 +54,17 @@
         });
 
         $('button').click(function() {
+            
+            $('button').attr('disabled', 'disabled');
+            
             var call = $(this).parent();
+
+            var url = $(this).attr('data-url');
             var ajax = {
-                'url': $(this).attr('data-url'),
+                'url': url,
                 'type': 'POST',
                 'complete': function(xhr, res) { 
-                    replyData = $.parseJSON(xhr.responseText);
+                    replyData = JSON.parse(xhr.responseText);
                     
                     $("#result").html(
                         '<pre class="prettyprint linenums"><code class="language-js">' +
@@ -56,21 +72,20 @@
                         '</code></pre>'
                     );
                     
-                    if (
-                        (typeof replyData.status != 'undefined' && replyData.status == 'success') ||
-                        typeof replyData.status == 'undefined'
-                    ) {
+                    if (<?php echo $success; ?>) {
                         $("button[data-url='"+this.url+"']").siblings('h2').append(' <span class="green">✔</span>');
                     } else {
                         $("button[data-url='"+this.url+"']").siblings('h2').append(' <span class="red">✘</span>');
                     }
                     
                     prettyPrint();
-                }            
+                    
+                    $('button').removeAttr('disabled');
+                }
             }
 
             if (typeof call.find('textarea').val() != 'undefined') {
-                ajax.data = JSON.parse(call.find('textarea').val());
+                ajax.data = JSON.parse(replaceTokens(call.find('textarea').val()));
             }
 
             $.ajax(ajax);
