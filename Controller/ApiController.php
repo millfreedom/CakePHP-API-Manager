@@ -29,7 +29,7 @@ class ApiController extends Controller
         
         if (Configure::read('ApiManager.legacy')) {
             if (!in_array($this->action, Configure::read('ApiManager.objectifyExclude'))) {
-                $data = $this->_objectify($model->{$function}($requestMapper::map($data)));
+                $data = ApiUtility::objectify($model->{$function}($requestMapper::map($data)));
             } else {
                 $data = $model->{$function}($requestMapper::map($data));
             }
@@ -46,33 +46,4 @@ class ApiController extends Controller
 		$this->set('Success', $response);
 		$this->set('_serialize', 'Success');
 	}
-    
-    // .hack//SIGN
-    private function _objectify($data) {
-        foreach ($data as $key => $value) {
-            if (is_array($value)) {
-                $data[$key] = $this->_objectify($value);
-            }
-        }
-        
-        return (object) $data;
-    }
-    
-    public function getTokens($calls) {
-        $tokens = NULL;
-        
-        self::_flatten_array(Hash::extract($calls, '{n}.tokens'), $tokens);
-        
-        return $tokens;
-    }
-    
-    private static function _flatten_array($array, &$result) {
-        foreach($array as $key => $value) {
-            if(is_array($value)) {
-                self::_flatten_array($value, $result);
-            } else {
-                $result[$key] = $value;
-            }
-        }
-    }
 }

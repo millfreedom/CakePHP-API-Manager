@@ -17,5 +17,7 @@ foreach (['ApiException', 'ApiSaveException', 'ApiLoginException', 'ApiNotPostEx
 }
 
 require APP . 'Plugin' . DS . 'ApiManager' . DS . 'Request' . DS . 'Api' . DS . 'ApiRequest.php';
+
+require APP . 'Plugin' . DS . 'ApiManager' . DS . 'Lib' . DS . 'ApiUtility.php';
     
 ?>

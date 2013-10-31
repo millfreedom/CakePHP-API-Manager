@@ -5,7 +5,6 @@
     <h1><?php echo $title; ?></h1>
     <div class="actions">
         <ul>
-            <?php $this->Api->createRuns(); ?>
             <li>
                 <input type="checkbox" id="showInfo" checked="checked" /> Show extended info
             </li>
@@ -15,16 +14,9 @@
         </ul>
     </div>
     <?php foreach ($calls as $call) : ?>
-    <div class="call">
-        <h2><?php echo $call['name']; ?></h2> 
-        <p><?php echo $call['description']; ?></p>
-        <button type="button" data-url="<?php echo $call['url']; ?>" id="<?php echo $call['id']; ?>"><?php echo $call['button']; ?></button>
-        <?php if (!empty($call['data'])) : ?>
-        <br />
-        <textarea name="text"><?php echo json_encode($call['data'], JSON_PRETTY_PRINT); ?></textarea>
-        <?php endif; ?>
-    </div>
+        <?php $this->element('ApiManager.call', ['call' => $call]); ?>
     <?php endforeach; ?>
+    
 </div>
 <div class="results">
     <h1>Results</h1>
@@ -58,7 +50,6 @@
             $('button').attr('disabled', 'disabled');
             
             var call = $(this).parent();
-
             var url = $(this).attr('data-url');
             var ajax = {
                 'url': url,
@@ -72,10 +63,19 @@
                         '</code></pre>'
                     );
                     
+                    var button = $("button[data-url='"+this.url+"']");
+                    
+                    var buttonTokens = JSON.parse(button.attr('data-tokens'));
+                    console.log(buttonTokens);
+                    
+                    for (i in buttonTokens) {
+                        tokens[i] = eval('replyData.'+buttonTokens[i]);
+                    }
+                    
                     if (<?php echo $success; ?>) {
-                        $("button[data-url='"+this.url+"']").siblings('h2').append(' <span class="green">✔</span>');
+                        button.siblings('h2').append(' <span class="green">✔</span>');
                     } else {
-                        $("button[data-url='"+this.url+"']").siblings('h2').append(' <span class="red">✘</span>');
+                        button.siblings('h2').append(' <span class="red">✘</span>');
                     }
                     
                     prettyPrint();
