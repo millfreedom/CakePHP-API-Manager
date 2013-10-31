@@ -65,15 +65,15 @@
                     
                     var button = $("button[data-url='"+this.url+"']");
                     
-                    var buttonTokens = JSON.parse(button.attr('data-tokens'));
-                    console.log(buttonTokens);
-                    
-                    for (i in buttonTokens) {
-                        tokens[i] = eval('replyData.'+buttonTokens[i]);
-                    }
-                    
                     if (<?php echo $success; ?>) {
                         button.siblings('h2').append(' <span class="green">✔</span>');
+                        
+                        var buttonTokens = JSON.parse(button.attr('data-tokens'));
+                        console.log(buttonTokens);
+                    
+                        for (i in buttonTokens) {
+                            tokens[i] = eval('replyData.'+buttonTokens[i]);
+                        }
                     } else {
                         button.siblings('h2').append(' <span class="red">✘</span>');
                     }
