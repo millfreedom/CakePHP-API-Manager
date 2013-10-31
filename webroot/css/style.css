@@ -170,7 +170,7 @@ li.L1,li.L3,li.L5,li.L7,li.L9
 	font-family: 'Anonymous Pro', sans-serif;
 	font-size: 12px;
 }
-li:hover, li.select
+#result li:hover, li.select
 {
 	background-color: #111;
 	font-family: 'Anonymous Pro', sans-serif;

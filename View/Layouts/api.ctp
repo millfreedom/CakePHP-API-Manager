@@ -16,7 +16,6 @@
     <?php foreach ($calls as $call) : ?>
         <?php echo $this->element('ApiManager.call', ['call' => $call]); ?>
     <?php endforeach; ?>
-    
 </div>
 <div class="results">
     <h1>Results</h1>
