@@ -5,3 +5,4 @@
     var validation = "<?php echo $validation; ?>";
 </script>
 <script src="/ApiManager/js/api.js" type="text/javascript"></script>
+<?php echo $this->fetch('scripts'); ?>
