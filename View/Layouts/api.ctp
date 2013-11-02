@@ -12,8 +12,8 @@
                     <?php 
                         echo $this->fetch('menu');
                 
-                        foreach ($runs as $key => $run) {
-                            echo $this->element('ApiManager.run', ['run' => $run, 'button' => $key]);
+                        foreach ($runs as $button => $run) {
+                            echo $this->element('ApiManager.run', compact('run', 'button'));
                         }
                     ?>
                     <li>
@@ -28,11 +28,11 @@
                 echo $this->fetch('calls');
         
                 if (isset($facebook)) {
-                    echo $this->element('ApiManager.facebook', ['facebook' => $facebook]);
+                    echo $this->element('ApiManager.facebook', compact('facebook'));
                 }
         
                 foreach ($calls as $call) {
-                    echo $this->element('ApiManager.call', ['call' => $call]);
+                    echo $this->element('ApiManager.call', compact('call'));
                 }
             ?>
         </div>
@@ -40,6 +40,6 @@
             <h1>Results</h1>
             <div id="result"></div>
         </div>
-        <?php echo $this->element('ApiManager.javascript', ['tokens' => $tokens]); ?>
+        <?php echo $this->element('ApiManager.javascript', compact('tokens', 'validation')); ?>
     </body>
 </html>
