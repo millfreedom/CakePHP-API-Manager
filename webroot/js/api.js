@@ -64,7 +64,7 @@ $(document).ready(function() {
 
                 prettyPrint();
                 
-                if (validation) {
+                if (eval(validation)) {
                     button.siblings('h2').append(' <span class="green">✔</span>');
 
                     if (typeof button.attr('data-tokens') != 'undefined' && button.attr('data-tokens') != '') {
