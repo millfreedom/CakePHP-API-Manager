@@ -5,6 +5,7 @@
     <h1><?php echo $title; ?></h1>
     <div class="actions">
         <ul>
+            <?php echo $this->fetch('menu'); ?>
             <?php foreach ($runs as $key => $run) : ?>
                 <?php echo $this->element('ApiManager.run', ['run' => $run, 'button' => $key]); ?>
             <?php endforeach; ?>
@@ -16,6 +17,7 @@
             </li>
         </ul>
     </div>
+    <?php echo $this->fetch('calls'); ?>
     <?php foreach ($calls as $call) : ?>
         <?php echo $this->element('ApiManager.call', ['call' => $call]); ?>
     <?php endforeach; ?>
