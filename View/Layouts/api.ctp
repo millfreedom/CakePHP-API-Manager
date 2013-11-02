@@ -40,6 +40,6 @@
             <h1>Results</h1>
             <div id="result"></div>
         </div>
-        <?php echo $this->element('ApiManager.javascript'); ?>
+        <?php echo $this->element('ApiManager.javascript', ['tokens' => $tokens]); ?>
     </body>
 </html>

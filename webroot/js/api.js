@@ -1,5 +1,3 @@
-var tokens = JSON.parse('<?php echo json_encode($tokens); ?>');
-
 function replaceTokens(str) {
     for (i in tokens) {
         if (tokens[i] != '') {

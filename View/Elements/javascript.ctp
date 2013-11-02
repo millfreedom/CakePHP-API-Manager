@@ -1,3 +1,6 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
-<script src="/ApiManager/js/api.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var tokens = JSON.parse('<?php echo json_encode($tokens); ?>');
+</script>
+<script src="/ApiManager/js/api.js" type="text/javascript"></script>
