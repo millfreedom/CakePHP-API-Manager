@@ -81,7 +81,6 @@ $(document).ready(function() {
                         var call = runArray.pop();
         
                         $('#'+call).click();
-                        window.location.hash = '#' + call + '_anchor';
                     }
                 } else {
                     button.siblings('h2').append(' <span class="red">✘</span>');
