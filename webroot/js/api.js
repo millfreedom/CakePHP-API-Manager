@@ -1,7 +1,7 @@
 function replaceTokens(str) {
     for (i in tokens) {
         if (tokens[i] != '') {
-            str = str.replace(i, tokens[i]);
+            str = str.replace(RegExp(i, 'g'), tokens[i]);
         }
     }
     
